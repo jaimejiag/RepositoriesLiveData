@@ -13,7 +13,6 @@ import com.jaime.repositorieslivedata.data.models.Project;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder> {
     private List<Project> mProjectList;

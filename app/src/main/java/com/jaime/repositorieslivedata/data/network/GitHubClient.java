@@ -7,33 +7,23 @@ import com.jaime.repositorieslivedata.data.models.Project;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
+@Singleton
 public class GitHubClient {
-    private static GitHubClient mInstance;
     private GitHubService mGitHubService;
 
 
-    private GitHubClient() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(GitHubService.GITHUB_API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        mGitHubService = retrofit.create(GitHubService.class);
-    }
-
-
-    public synchronized static GitHubClient getInstance() {
-        if (mInstance == null)
-            mInstance = new GitHubClient();
-
-        return mInstance;
+    @Inject
+    public GitHubClient(GitHubService gitHubService) {
+        mGitHubService = gitHubService;
     }
 
 
